@@ -61,7 +61,7 @@
 <script>
     $(document).ready(function() {
         $('#monitoring').addClass('active');
-        $('#monitoring_peta').addClass('active');
+        $('#lokasi').addClass('active');
         LoadMap();
         var user_location = [109.0833213, -6.8696789];
         mapboxgl.accessToken = 'pk.eyJ1Ijoicml6YWwxMjMiLCJhIjoiY2p6OTNtYmQ4MWU4YjNncWlrbjFicGJ4aSJ9.2oVjdv79elD6xsm5CRe9TA';
