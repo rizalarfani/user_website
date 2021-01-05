@@ -21,6 +21,12 @@ class Dashboard extends CI_Controller
         ];
         template($params, 1);
     }
+    public function GetGrafik()
+    {
+        $query = "SELECT id,tanggal_kejadian, COUNT(id) as jumlah, YEAR(tanggal_kejadian) as tahun FROM kebakaran GROUP BY YEAR(tanggal_kejadian)";
+        $resutl = $this->db->query($query)->result();
+        echo json_encode($resutl, true);
+    }
 }
 
 /* End of file Dashboard.php */

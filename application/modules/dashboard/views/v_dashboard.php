@@ -12,7 +12,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
@@ -27,7 +27,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
@@ -46,7 +46,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
@@ -91,41 +91,55 @@
     $(document).ready(function() {
         $('#dashboard').addClass('active');
         var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
+        $.ajax({
+            type: "GET",
+            url: '<?php echo base_url('dashboard/GetGrafik') ?>',
+            dataType: 'JSON',
+            success: function(respon) {
+                let tahun = [];
+                let jumlah_kejadian = [];
+                $.each(respon, function(item, data) {
+                    tahun.push(data.tahun);
+                    jumlah_kejadian.push(data.jumlah);
+                });
+                Grafik(tahun, jumlah_kejadian);
             }
         });
+
+        function Grafik(tahun, data) {
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: tahun,
+                    datasets: [{
+                        label: 'Jumlah Kebakaran',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
     });
 </script>
