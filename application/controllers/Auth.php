@@ -11,9 +11,7 @@ class Auth extends CI_Controller
     public function index()
     {
         $cookie = get_cookie($this->cookie);
-        if ($this->session->userdata('log_admin')) {
-            redirect('dashboard');
-        } else if ($cookie <> '') {
+        if ($cookie <> '') {
             $data = $this->universal->getOne('*', ['cookie' => $cookie], 'user');
             if ($data) {
                 $this->DaftarSession($data);
@@ -31,7 +29,6 @@ class Auth extends CI_Controller
             $this->load->view('backend/login', $data);
         }
     }
-
     public function proses()
     {
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email');
@@ -76,8 +73,8 @@ class Auth extends CI_Controller
 
     public function logout()
     {
+        delete_cookie($this->cookie);
         $this->session->sess_destroy();
-        $this->session->set_flashdata('info', 'Berhasil login');
         redirect('login');
     }
 }
