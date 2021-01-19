@@ -15,8 +15,6 @@ class User extends CI_Controller
     {
         if ($this->uri->segment(2) == 'non_active') {
             $id_user = dekrip($this->uri->segment(3));
-            echo $id_user;
-            die;
             if (empty($id_user)) {
                 redirect('user');
             }

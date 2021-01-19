@@ -45,6 +45,11 @@
                 </a>
             </li>
         <?php endif; ?>
+        <li id="about">
+            <a href="<?php echo base_url('about') ?>">
+                <i class="fa fa-info"></i> <span>About</span>
+            </a>
+        </li>
         <li>
             <a href="<?php echo base_url('logout') ?>">
                 <i class="fa fa-sign-out"></i> <span>Logout</span>

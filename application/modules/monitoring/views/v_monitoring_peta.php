@@ -106,6 +106,7 @@
                                         coordinates: [data.lat, data.long]
                                     },
                                     properties: {
+                                        suhu: '' + data.suhu + '',
                                         tgl: '' + data.tanggal_kejadian + '',
                                         img: '<?php echo base_url('uploads/image/') ?>' + data.foto + '',
                                         lat: '' + data.lat + '',
@@ -132,6 +133,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-6">
                                                     <p>Tgl Kejadian : ` + marker.properties.tgl + `</p>
+                                                    <p>Suhu : ` + marker.properties.suhu + `</p>
                                                 </div>
                                             </div>
                                             <div class="row p-2">

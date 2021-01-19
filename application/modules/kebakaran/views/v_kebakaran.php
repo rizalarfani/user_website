@@ -28,6 +28,7 @@
                         <th>No</th>
                         <th>Longitude</th>
                         <th>Latitude</th>
+                        <th>Suhu</th>
                         <th>Status</th>
                         <th>Foto</th>
                     </tr>
@@ -38,6 +39,7 @@
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $data->long ?></td>
                         <td><?php echo $data->lat ?></td>
+                        <td><?php echo $data->suhu ?></td>
                         <td><?php echo ($data->status == 0) ? '<span class="label label-success">Tidak ada kebakaran</span>' : '<span class="label label-danger">Ada Kebakaran</span>' ?></td>
                         <td>adkjfj</td>
                     </tr>
