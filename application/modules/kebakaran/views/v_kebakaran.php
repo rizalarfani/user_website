@@ -30,6 +30,7 @@
                         <th>Latitude</th>
                         <th>Suhu</th>
                         <th>Status</th>
+                        <th>Keterangan</th>
                         <th>Foto</th>
                     </tr>
                 </thead>
@@ -37,11 +38,12 @@
                 foreach ($kebakaran as $data) : ?>
                     <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $data->long ?></td>
-                        <td><?php echo $data->lat ?></td>
+                        <td><?php echo $data->longitude ?></td>
+                        <td><?php echo $data->latitude ?></td>
                         <td><?php echo $data->suhu ?></td>
                         <td><?php echo ($data->status == 0) ? '<span class="label label-success">Tidak ada kebakaran</span>' : '<span class="label label-danger">Ada Kebakaran</span>' ?></td>
-                        <td>adkjfj</td>
+                        <td><?php echo $data->keterangan ?></td>
+                        <td> <img alt="Kebakaran" src="<?php echo base_url() ?>uploads/image/<?php echo $data->foto ?>" style="width: 100px; height: 100px;"></td>
                     </tr>
                 <?php endforeach; ?>
                 <tbody>

@@ -103,14 +103,14 @@
                                     type: 'Feature',
                                     geometry: {
                                         type: 'Point',
-                                        coordinates: [data.lat, data.long]
+                                        coordinates: [data.latitude, data.longitude]
                                     },
                                     properties: {
                                         suhu: '' + data.suhu + '',
                                         tgl: '' + data.tanggal_kejadian + '',
                                         img: '<?php echo base_url('uploads/image/') ?>' + data.foto + '',
-                                        lat: '' + data.lat + '',
-                                        lng: '' + data.long + '',
+                                        lat: '' + data.latitude + '',
+                                        lng: '' + data.longitude + '',
                                     }
                                 }]
                             };
